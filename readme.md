@@ -4,8 +4,8 @@
 
 Required Astra 5.62-rc8 or newer
 
-- 1. Install, configure and launch [Astra](https://cesbo.com/astra/quick-start/):
-- 1. In the Stream options (on Astra that receives channels), set EPG Export option. Format: `JSON` and Destination: `http://server-address:8080` (server-address - ip address of the server with this script, 8080 - is a port number defined in the `PORT` variable)
+1. Install, configure and launch [Astra](https://cesbo.com/astra/quick-start/):
+2. In the Stream options (on Astra that receives channels), set EPG Export option. Format: `JSON` and Destination: `http://server-address:8080` (server-address - ip address of the server with this script, 8080 - is a port number defined in the `PORT` variable)
 
 ## Configuration
 
