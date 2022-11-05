@@ -31,7 +31,8 @@ spec:
     spec:
       containers:
       - name: epg-astra
-        image: freeman1988/epg-aggregator:latest
+        image: freeman1988/epg-aggregator:master
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         resources:
