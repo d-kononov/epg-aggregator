@@ -1,0 +1,44 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: epg-astra
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+    name: web
+    protocol: TCP
+  type: ClusterIP
+  selector:
+    app: epg-astra
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: epg-astra
+spec:
+  selector:
+    matchLabels:
+      app: epg-astra
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: epg-astra
+    spec:
+      containers:
+      - name: epg-astra
+        image: freeman1988/epg-aggregator:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+      restartPolicy: Always
