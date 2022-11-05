@@ -35,6 +35,9 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
+        env:
+        - name: GIN_MODE
+          value: release
         resources:
           limits:
             cpu: 500m
@@ -42,4 +45,20 @@ spec:
           requests:
             cpu: 100m
             memory: 256Mi
+        readinessProbe:
+          initialDelaySeconds: 3
+          timeoutSeconds: 3
+          periodSeconds: 5
+          failureThreshold: 4
+          httpGet:
+            path: /health
+            port: 8080
+        livenessProbe:
+          initialDelaySeconds: 5
+          timeoutSeconds: 3
+          periodSeconds: 5
+          failureThreshold: 4
+          httpGet:
+            path: /health
+            port: 8080
       restartPolicy: Always

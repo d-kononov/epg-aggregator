@@ -38,3 +38,12 @@ Required Astra 5.62-rc8 or newer
 Put `systemd/astra-epg-aggregator.service` file to the `/etc/systemd/system/` folder and run `systemd daemon-reload`.
 
 Download archive file from the latest release, unpack it to `/usr/local/bin/` folder and run `systemd enable astra-epg-aggregator`, `systemd start astra-epg-aggregator` 
+
+## Endpoints
+
+```bash
+- POST   /              --> EPG Data income endpoint
+- GET    /epg.xml       --> Download EPG xml file
+- GET    /epg.xml.gz    --> Download compressed EPG xml file
+- GET    /health        --> Healthcheck endpoint
+```
