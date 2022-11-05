@@ -26,11 +26,6 @@ func epgIncome(c *gin.Context) {
 	log.Debugf("processed '%d' entries", len(body.Items))
 }
 
-//func sendEpgFile(c *gin.Context) {
-//	c.Header("Content-Type", "application/xml")
-//	c.File(epgXmlFilePath)
-//}
-
 func health(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message": "pong",
