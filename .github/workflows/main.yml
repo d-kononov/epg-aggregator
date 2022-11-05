@@ -42,7 +42,7 @@ jobs:
         go-version: '1.19'
         check-latest: true
         cache: true
-    - run: CGO_ENABLED=0 go build -a -installsuffix cgo -o astra-epg-aggregator .
+    - run: go build -a -installsuffix cgo -o astra-epg-aggregator .
     - run: tar -czvf astra-epg-aggregator.tar.gz astra-epg-aggregator
     - name: Release
       uses: softprops/action-gh-release@v1
