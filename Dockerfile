@@ -14,6 +14,7 @@ LABEL com.dk.label-schema.name="astra-epg-aggregator" \
     com.dk.label-schema.vcs-url="https://github.com/d-kononov/epg-aggregator" \
     com.dk.label-schema.image-url="freeman1988/epg-aggregator:latest"
 
+WORKDIR /app
 COPY --from=builder /app/app /app/app
 
-ENTRYPOINT /app/app
+ENTRYPOINT ./app
