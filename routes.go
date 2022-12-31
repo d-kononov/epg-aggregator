@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	log "github.com/sirupsen/logrus"
+	log "github.com/gookit/slog"
 	"net/http"
 	"time"
 )
@@ -14,7 +14,7 @@ func epgIncome(c *gin.Context) {
 		return
 	}
 	for _, channel := range body.Channels {
-		var items []InputDataItems
+		var items []InputDataItem
 		for _, item := range body.Items {
 			if item.Channel != channel.Id {
 				continue

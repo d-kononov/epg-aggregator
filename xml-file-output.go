@@ -5,7 +5,7 @@ import (
 	"compress/gzip"
 	"encoding/xml"
 	"fmt"
-	log "github.com/sirupsen/logrus"
+	log "github.com/gookit/slog"
 	"os"
 	"sort"
 	"strings"
@@ -56,13 +56,13 @@ func epgFileGenerate() {
 	})
 	out, err := xml.MarshalIndent(output, " ", "  ")
 	if err != nil {
-		log.WithError(err).Error("failed to convert object to xml")
+		log.WithFields(log.M{"error": err.Error()}).Error("failed to convert object to xml")
 		return
 	}
 	epgBytes := []byte(Header + string(out))
 	err = os.WriteFile(epgXmlFilePath, epgBytes, 0644)
 	if err != nil {
-		log.WithError(err).Errorf("failed to write xml to file '%s'", epgXmlFilePath)
+		log.WithFields(log.M{"error": err.Error()}).Errorf("failed to write xml to file '%s'", epgXmlFilePath)
 		return
 	}
 
@@ -73,7 +73,7 @@ func epgFileGenerate() {
 	_ = w.Close()
 	err = os.WriteFile(fmt.Sprintf("%s.gz", epgXmlFilePath), b.Bytes(), 0644)
 	if err != nil {
-		log.WithError(err).Errorf("failed to write compressed xml to file '%s.gz'", epgXmlFilePath)
+		log.WithFields(log.M{"error": err.Error()}).Errorf("failed to write compressed xml to file '%s.gz'", epgXmlFilePath)
 		return
 	}
 }

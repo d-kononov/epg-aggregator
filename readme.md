@@ -21,6 +21,12 @@ Required Astra 5.62-rc8 or newer
 
 `STALKER` - By default it rename <sub-title> tag to <desc> in xml data unless `STALKER=false` was set.
 
+`CONFIG_PATH` - Config file path for Mail-ru EPG service parser module (`%workdir%/mail-ru-parser-config.yaml` by default).
+
+### Config file for mail-ru epg service parser
+
+Please take a loot at `mail-ru-parser-config.yaml` config file.
+
 ## Run
 
 ### Docker
@@ -29,9 +35,11 @@ Required Astra 5.62-rc8 or newer
 
 `docker run freeman1988/epg-aggregator:latest`
 
+Mount `mail-ru-parser-config.yaml` if needed.
+
 ### Kubernetes
 
-`kubectl apply -f deployment.yaml`. Create ingress if needed.
+`kubectl create configmap epg-aggregator --from-file=mail-ru-parser-config.yaml && kubectl apply -f deployment.yaml`. Create ingress if needed.
 
 ### Systemd
 

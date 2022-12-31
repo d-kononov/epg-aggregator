@@ -61,4 +61,12 @@ spec:
           httpGet:
             path: /health
             port: 8080
+        volumeMounts:
+          - mountPath: /app/mail-ru-parser-config.yaml
+            name: config-volume
+            subPath: mail-ru-parser-config.yaml
       restartPolicy: Always
+      volumes:
+        - configMap:
+            name: epg-aggregator
+          name: config-volume

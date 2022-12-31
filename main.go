@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	log "github.com/sirupsen/logrus"
+	log "github.com/gookit/slog"
 	"os"
 	"strconv"
 	"time"
@@ -50,6 +50,8 @@ func main() {
 		}
 	}()
 
+	go runMailRuParser()
+
 	r := gin.Default()
 
 	r.POST("/", epgIncome)
@@ -68,7 +70,7 @@ func setOutputFilePath() {
 	}
 	workDir, err := os.Getwd()
 	if err != nil {
-		log.WithError(err).Fatal("failed to get workdir")
+		log.WithFields(log.M{"error": err.Error()}).Fatal("failed to get workdir")
 	}
 	staticDir := fmt.Sprintf("%s/static", workDir)
 	_, err = os.Stat(staticDir)

@@ -1,0 +1,66 @@
+parser-interval: 6 # run parser each x hours
+region: 2688
+parsing-depth: 3 # get epg for x days
+enabled: true
+
+mail-ru-channels:
+  - xmltv-id: 96044
+    mail-ru-id: 2835
+    name: ЭлТр
+  - xmltv-id: 96047
+    mail-ru-id: 2689
+    name: ОТРК Музыка
+  - xmltv-id: 96048
+    mail-ru-id: 2688
+    name: ОТРК Маданият
+  - xmltv-id: 96042
+    mail-ru-id: 2687
+    name: ОТРК Баластан
+  - xmltv-id: 96041
+    mail-ru-id: 2830
+    name: КТРК
+  - xmltv-id: 96050
+    mail-ru-id: 2831
+    name: КТРК спорт
+  - xmltv-id: 94050
+    mail-ru-id: 2958
+    name: Ала-Тоо 24
+  - xmltv-id: 96001
+    mail-ru-id: 2821
+    name: НТС
+  - xmltv-id: 96003
+    mail-ru-id: 2989
+    name: NEW TV
+  - xmltv-id: 96022
+    mail-ru-id: 3008
+    name: ТУМАР
+  - xmltv-id: 96067
+    mail-ru-id: 2990
+    name: Семейный
+  - xmltv-id: 96065
+    mail-ru-id: 2972
+    name: Cinemax
+
+  - xmltv-id: 98009
+    mail-ru-id: 2956
+    name: Setanta Sports 1
+  - xmltv-id: 98010
+    mail-ru-id: 2454
+    name: Setanta Sports 2
+
+  - xmltv-id: 98016
+    mail-ru-id: 2884
+    name: 312 Кино
+  - xmltv-id: 98017
+    mail-ru-id: 2707
+    name: 312 Сериал
+  - xmltv-id: 98018
+    mail-ru-id: 2888
+    name: 312 Музыка
+
+  - xmltv-id: 98014
+    mail-ru-id: 1983
+    name: TV1 KG
+  - xmltv-id: 98021
+    mail-ru-id: 1987
+    name: TV2 KG
