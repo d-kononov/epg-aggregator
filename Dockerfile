@@ -17,4 +17,6 @@ LABEL com.dk.label-schema.name="astra-epg-aggregator" \
 WORKDIR /app
 COPY --from=builder /app/app /app/app
 
+RUN apk add --no-cache tzdata
+
 ENTRYPOINT ./app
