@@ -52,12 +52,14 @@ func main() {
 
 	go runMailRuParser()
 
-	r := gin.Default()
+	healthCheckEndpoint := "/health"
+	r := gin.New()
+	r.Use(gin.LoggerWithWriter(gin.DefaultWriter, healthCheckEndpoint), gin.Recovery())
+	r.GET(healthCheckEndpoint, health)
 
 	r.POST("/", epgIncome)
 	r.StaticFile("/epg.xml", epgXmlFilePath)
 	r.StaticFile("/epg.xml.gz", fmt.Sprintf("%s.gz", epgXmlFilePath))
-	r.GET("/health", health)
 
 	_ = r.Run()
 }
