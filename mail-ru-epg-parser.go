@@ -139,7 +139,7 @@ func getItem(id int, s MailRuGetEpgRespSchedule, e MailRuGetEpgRespEvent, eIndex
 
 func getReq(parserConfig *MailRuEpgParseConfig, channel MailRuEpgParseConfigEntry, currentDate time.Time) *http.Request {
 	url := fmt.Sprintf("%s/?region_id=%d&channel_id=%d&date=%s",
-		basePath, parserConfig.Region, channel.MailRuId, currentDate.Format("2006-02-01"))
+		basePath, parserConfig.Region, channel.MailRuId, currentDate.Format("2006-01-02"))
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.2 Safari/605.1.15")
 	req.Header.Set("X-Requested-With", "XMLHttpRequest")
