@@ -65,6 +65,9 @@ spec:
           - mountPath: /app/mail-ru-parser-config.yaml
             name: config-volume
             subPath: mail-ru-parser-config.yaml
+          - mountPath: /app/mail-grabber-config.yaml
+            name: config-volume
+            subPath: mail-grabber-config.yaml
       restartPolicy: Always
       volumes:
         - configMap:

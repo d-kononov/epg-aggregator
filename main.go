@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	log "github.com/gookit/slog"
 	"os"
 	"strconv"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	log "github.com/gookit/slog"
 )
 
 var epgXmlFilePath = ""
@@ -51,6 +52,7 @@ func main() {
 	}()
 
 	go runMailRuParser()
+	go runMailGrabber()
 
 	healthCheckEndpoint := "/health"
 	r := gin.New()

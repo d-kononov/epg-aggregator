@@ -63,6 +63,23 @@ type Entry struct {
 	Value string `xml:",chardata"`
 }
 
+// -- MAIL GRABBER --
+
+type MailGrabberConfig struct {
+	Interval               int                             `yaml:"parser-interval"`
+	ImapAddress            string                          `yaml:"imap-address"`
+	Login                  string                          `yaml:"login"`
+	Password               string                          `yaml:"password"`
+	DeleteMessageAfterRead bool                            `yaml:"delete-message-after-read"`
+	Channels               []MailGrabberChannelConfigEntry `yaml:"email-channels"`
+}
+type MailGrabberChannelConfigEntry struct {
+	Name                 string `yaml:"name"`
+	XmltvId              int    `yaml:"xmltv-id"`
+	EmailSubjectContains string `yaml:"email-subject-contains"`
+	EmailFromContains    string `yaml:"from-contains"`
+}
+
 // -- MAIL-RU --
 
 type MailRuEpgParseConfig struct {
