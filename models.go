@@ -95,38 +95,21 @@ type MailRuEpgParseConfigEntry struct {
 	MailRuId int    `yaml:"mail-ru-id"`
 }
 type MailRuGetEpgResp struct {
-	Status        string                     `json:"status"`
-	CurrentTs     int                        `json:"current_ts"`
-	CurrentOffset int                        `json:"current_offset"`
-	Schedule      []MailRuGetEpgRespSchedule `json:"schedule"`
+	Data MailRuGetEpgRespSchedule `json:"data"`
 }
 type MailRuGetEpgRespSchedule struct {
 	Channel struct {
-		Name      string      `json:"name"`
-		PicBig    interface{} `json:"pic_big"`
-		PicSmall  interface{} `json:"pic_small"`
-		IsPromo   int         `json:"is_promo"`
-		PicUrl    interface{} `json:"pic_url"`
-		PicUrl128 interface{} `json:"pic_url_128"`
-		Url       string      `json:"url"`
-		Slug      string      `json:"slug"`
-		Id        string      `json:"id"`
-		PicUrl64  interface{} `json:"pic_url_64"`
+		Id        int    `json:"id"`
+		Name      string `json:"name"`
+		Url       string `json:"url"`
+		LiveUrl   string `json:"live_url"`
+		HasLive   bool   `json:"has_live"`
+		IsCentral bool   `json:"is_central"`
 	} `json:"channel"`
-	Event struct {
-		Current []MailRuGetEpgRespEvent `json:"current"`
-		Past    []MailRuGetEpgRespEvent `json:"past"`
-		Concat  []MailRuGetEpgRespEvent
-	} `json:"event"`
+	Events []MailRuGetEpgRespEvent `json:"events"`
 }
 type MailRuGetEpgRespEvent struct {
-	ChannelId    string `json:"channel_id"`
-	Name         string `json:"name"`
-	CategoryId   int    `json:"category_id"`
-	EpisodeTitle string `json:"episode_title"`
-	Url          string `json:"url"`
-	Id           string `json:"id"`
-	Start        string `json:"start"`
-	EpisodeNum   int    `json:"episode_num"`
-	StartDate    time.Time
+	Name    string `json:"name"`
+	StartTs int64  `json:"start_ts"`
+	StopTs  int64  `json:"stop_ts"`
 }
